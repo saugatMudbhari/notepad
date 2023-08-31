@@ -1,12 +1,14 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class frame {
+public class frame implements ActionListener {
     JTextArea textArea;
     JScrollPane scrollPane;
     JMenuBar menuBar = new JMenuBar();
     JMenu menuFile, menuEdit, menuFormat, menuColor;
     JMenuItem iNew, iOPen, iSave, iSaveAs, iExit;
-
+    Function_File file = new Function_File(this);
     JFrame f = new JFrame("Notepad");
 
     public frame() {
@@ -51,11 +53,15 @@ public class frame {
     }
 
     public void createFileMenu() {
-        iNew = new JMenuItem("New");
 //        making sub-menu this item of menuFile so..
+        iNew = new JMenuItem("New");
+        iNew.addActionListener(this);
+        iNew.setActionCommand("New");
         menuFile.add(iNew);
 
         iOPen = new JMenuItem("Open");
+        iOPen.addActionListener(this);
+        iOPen.setActionCommand("Open");
         menuFile.add(iOPen);
 
         iSave = new JMenuItem("Save");
@@ -66,5 +72,14 @@ public class frame {
 
         iExit = new JMenuItem("Exit");
         menuFile.add(iExit);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        switch (command) {
+            case "New" -> file.newFile();
+            case "Open" -> file.open();
+        }
     }
 }
