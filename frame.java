@@ -65,12 +65,18 @@ public class frame implements ActionListener {
         menuFile.add(iOPen);
 
         iSave = new JMenuItem("Save");
+        iSave.addActionListener(this);
+        iSave.setActionCommand("Save");
         menuFile.add(iSave);
 
         iSaveAs = new JMenuItem("SaveAs");
+        iSaveAs.addActionListener(this);
+        iSaveAs.setActionCommand("SaveAs");
         menuFile.add(iSaveAs);
 
         iExit = new JMenuItem("Exit");
+        iExit.addActionListener(this);
+        iExit.setActionCommand("Exit");
         menuFile.add(iExit);
     }
 
@@ -80,6 +86,9 @@ public class frame implements ActionListener {
         switch (command) {
             case "New" -> file.newFile();
             case "Open" -> file.open();
+            case "Save" -> file.save();
+            case "SaveAs" -> file.saveAs();
+            case "Exit"->file.exit();
         }
     }
 }
