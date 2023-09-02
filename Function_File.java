@@ -41,7 +41,6 @@ public class Function_File {
     }
 
     public void save() {
-
         if (fileName == null) {
             saveAs();
         } else {
@@ -72,8 +71,7 @@ public class Function_File {
         }
     }
 
-    public void exit()
-    {
+    public void exit() {
         System.exit(0);
     }
 }
