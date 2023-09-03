@@ -12,6 +12,7 @@ public class frame implements ActionListener {
     //    this is used for sub-menu
     JMenuItem iNew, iOPen, iSave, iSaveAs, iExit;
     JMenuItem iWrap, iFontArial, iFontCSMS, iFontTNR, iFontSize8, iFontSize16, iFontSize20, iFontSize24, iFontSize28;
+    JMenuItem iColor1, iColor2;
     JMenu menuFont, menuFontSize;
     Function_File file = new Function_File(this);
     Function_Format format = new Function_Format(this);
@@ -22,8 +23,10 @@ public class frame implements ActionListener {
         createMenuBar();
         createFileMenu();
         createFormatMenu();
-        format.selectedFont="Arial";
+        format.selectedFont = "Arial";
         format.createFont(16);
+        createColor();
+        format.changeColor("white");
         createWindow();
 
     }
@@ -108,6 +111,9 @@ public class frame implements ActionListener {
             case "20" -> format.createFont(20);
             case "24" -> format.createFont(24);
             case "28" -> format.createFont(28);
+            case "white" -> format.changeColor(command);
+            case "Black" -> format.changeColor(command);
+
         }
     }
 
@@ -164,6 +170,20 @@ public class frame implements ActionListener {
         iFontSize28.addActionListener(this);
         iFontSize28.setActionCommand("28");
         menuFontSize.add(iFontSize28);
+
+    }
+
+    public void createColor() {
+        iColor1 = new JMenuItem("white");
+        iColor1.addActionListener(this);
+        iColor1.setActionCommand("white");
+        menuColor.add(iColor1);
+
+        iColor2 = new JMenuItem("Black");
+        iColor2.addActionListener(this);
+        iColor2.setActionCommand("Black");
+        menuColor.add(iColor2);
+
 
     }
 }

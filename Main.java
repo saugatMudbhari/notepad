@@ -3,7 +3,5 @@ public class Main {
         new frame();
     }
 
-    public void format() {
 
-    }
 }
