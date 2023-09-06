@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Password {
+public class Password implements ActionListener {
     JFrame frame;
+    String getAPassword;
     JLabel mylabel, title, pass;
     JTextField textField1;
     JButton button;
@@ -58,5 +61,15 @@ public class Password {
         Dimension size = button.getPreferredSize();
         button.setBounds(50, 170, size.width + 10, size.height + 10);
         frame.add(button);
+
+//        action Listener
+        button.addActionListener(this);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        getAPassword=textField1.getText();
+        System.out.println(getAPassword);
     }
 }
